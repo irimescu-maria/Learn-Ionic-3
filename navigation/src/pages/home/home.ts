@@ -1,22 +1,31 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { SecondPage } from '../second/second';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  navigateToSecondPage(): void {
-    //Without using Lazy Loading
-    // this.navCtrl.push(SecondPage);
-
-    //Using Lazy Loading
-    this.navCtrl.push('secondPage');
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
+
+  navigateToSecondPage() {
+    this.navCtrl.push('SecondPage', {
+      message: "Hello from the HomePage!"
+    });
+  }
+
 }
